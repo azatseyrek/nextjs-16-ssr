@@ -276,6 +276,20 @@ This project takes full advantage of Next.js 16's enhanced server-side rendering
 
 ---
 
+## 🙏 Acknowledgments
+
+This project is based on the original work by **[JavaScript Mastery](https://www.youtube.com/@javascriptmastery)**. The core architecture and design patterns were adapted and customized for the Individual Promotion System with additional features and improvements including:
+
+- Enhanced UI/UX with glass morphism effects
+- Mongoose 9.0.2 compatibility updates
+- Extended form validation and error handling
+- Custom sequence diagrams and documentation
+- Additional API optimizations
+
+Special thanks to JavaScript Mastery for providing an excellent foundation and learning resource.
+
+---
+
 <div align="center">
   <p>Built for Individual Promotion System</p>
 </div>
