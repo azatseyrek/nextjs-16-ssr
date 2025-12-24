@@ -109,30 +109,8 @@ const EventSchema = new Schema<IEvent>(
   }
 );
 
-// Pre-save hook for slug generation and data normalization
-EventSchema.pre("save", function (next: any) {
-  const event = this as IEvent;
-
-  // Generate slug only if title changed or document is new
-  if (event.isModified("title") || event.isNew) {
-    event.slug = generateSlug(event.title);
-  }
-
-  // Normalize date to ISO format if it's not already
-  if (event.isModified("date")) {
-    event.date = normalizeDate(event.date);
-  }
-
-  // Normalize time format (HH:MM)
-  if (event.isModified("time")) {
-    event.time = normalizeTime(event.time);
-  }
-
-  next();
-});
-
 // Helper function to generate URL-friendly slug
-function generateSlug(title: string): string {
+export function generateSlug(title: string): string {
   return title
     .toLowerCase()
     .trim()
@@ -143,7 +121,7 @@ function generateSlug(title: string): string {
 }
 
 // Helper function to normalize date to ISO format
-function normalizeDate(dateString: string): string {
+export function normalizeDate(dateString: string): string {
   const date = new Date(dateString);
   if (isNaN(date.getTime())) {
     throw new Error("Invalid date format");
@@ -152,7 +130,7 @@ function normalizeDate(dateString: string): string {
 }
 
 // Helper function to normalize time format
-function normalizeTime(timeString: string): string {
+export function normalizeTime(timeString: string): string {
   // Handle various time formats and convert to HH:MM (24-hour format)
   const timeRegex = /^(\d{1,2}):(\d{2})(\s*(AM|PM))?$/i;
   const match = timeString.trim().match(timeRegex);
@@ -178,11 +156,8 @@ function normalizeTime(timeString: string): string {
   return `${hours.toString().padStart(2, "0")}:${minutes}`;
 }
 
-// Create unique index on slug for better performance
-// EventSchema.index({ slug: 1 }, { unique: true });
-
 // Create compound index for common queries
-// EventSchema.index({ date: 1, mode: 1 });
+EventSchema.index({ date: 1, mode: 1 });
 
 const Event = models.Event || model<IEvent>("Event", EventSchema);
 
