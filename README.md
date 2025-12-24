@@ -32,8 +32,9 @@
 2. ⚙️ [Tech Stack](#tech-stack)
 3. 🔋 [Features](#features)
 4. 📸 [Screenshots](#screenshots)
-5. 🚀 [Quick Start](#quick-start)
-6. 📁 [Project Structure](#project-structure)
+5. � [API Flow Architecture](#api-flow)
+6. 🚀 [Quick Start](#quick-start)
+7. 📁 [Project Structure](#project-structure)
 
 ## <a name="introduction">✨ Introduction</a>
 
@@ -105,6 +106,62 @@ Dev Event Platform is a comprehensive event management system designed for the *
   <img src="public/screenshoots/createEventPage.png" alt="Create Event Page" width="800">
   <p><em>Modern event creation form with glass morphism effect and image upload functionality</em></p>
 </div>
+
+## <a name="api-flow">🔄 API Flow Architecture</a>
+
+The application follows a modern API architecture with clear separation of concerns. Below are the comprehensive sequence diagrams showing the complete flow of different operations:
+
+### Event Creation Flow
+
+<div align="center">
+  <img src="public/screenshoots/sequenceDiagramCreate.png" alt="Event Creation Flow - Sequence Diagram" width="900">
+  <p><em>Event creation process: form validation, Cloudinary image upload, slug generation, and MongoDB persistence</em></p>
+</div>
+
+**Key Steps:**
+
+- Client-side form validation with image upload
+- Cloudinary integration for image storage and optimization
+- Automatic slug generation from event title
+- Date and time normalization
+- MongoDB persistence with schema validation
+- Redirect to created event page
+
+---
+
+### Event Details Page Flow
+
+<div align="center">
+  <img src="public/screenshoots/sequenceDiagram.png" alt="Event Details Page Flow - Sequence Diagram" width="900">
+  <p><em>Event details page: fetching event data by slug, server-side rendering, and displaying comprehensive event information</em></p>
+</div>
+
+**Key Steps:**
+
+- Dynamic route parameter handling ([slug])
+- Server-side data fetching for optimal SEO
+- Next.js 16 intelligent caching mechanism
+- Event data retrieval from MongoDB
+- Similar events suggestion algorithm
+- Real-time booking availability
+
+---
+
+### Book Event Flow
+
+<div align="center">
+  <img src="public/screenshoots/sequenceDiagramBookEvent.png" alt="Book Event Flow - Sequence Diagram" width="900">
+  <p><em>Event booking process: email validation, duplicate booking prevention, and confirmation</em></p>
+</div>
+
+**Key Steps:**
+
+- Email format validation (client & server)
+- Pre-save hook to verify event existence
+- Unique constraint: one booking per email per event
+- Automatic timestamp tracking (createdAt, updatedAt)
+- Success confirmation display
+- Database integrity checks
 
 ## <a name="quick-start">🚀 Quick Start</a>
 
