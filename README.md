@@ -1,6 +1,13 @@
 <div align="center">
   <br />
   <h1>Dev Event Platform</h1>
+  
+  <p align="center">
+    <a href="https://dev-events-ator50kvb-azatseyreks-projects.vercel.app/" target="_blank">
+      <img src="https://img.shields.io/badge/🚀_Live_Demo-Visit_Site-4CAF50?style=for-the-badge&labelColor=1a1a1a" alt="Live Demo" />
+    </a>
+  </p>
+  
   <br />
 
   <a href="public/screenshoots/homePage.png">
